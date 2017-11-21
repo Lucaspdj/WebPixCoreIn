@@ -329,6 +329,7 @@
     <Content Include="Content\template\HTML\img\demo\Thumbs.db" />
     <Content Include="Content\template\HTML\img\icons\32\Thumbs.db" />
     <Content Include="Content\template\HTML\img\Thumbs.db" />
+    <None Include="Properties\PublishProfiles\FolderProfile.pubxml" />
     <None Include="Scripts\jquery-1.10.2.intellisense.js" />
     <Content Include="Scripts\jquery-1.10.2.js" />
     <Content Include="Scripts\jquery-1.10.2.min.js" />
