@@ -26,5 +26,7 @@ namespace WebPixCoreIn.Models
         public System.Data.Entity.DbSet<WebPixCoreIn.Models.AcaoViewModel> AcaoViewModels { get; set; }
 
         public System.Data.Entity.DbSet<WebPixCoreIn.Models.ParametroViewModel> ParametroViewModels { get; set; }
+
+        public System.Data.Entity.DbSet<WebPixCoreIn.Models.TipoAcaoViewModel> TipoAcaoViewModels { get; set; }
     }
 }

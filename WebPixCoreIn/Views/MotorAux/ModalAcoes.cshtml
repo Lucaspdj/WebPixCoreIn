@@ -1,0 +1,59 @@
+﻿@{
+    Layout = null;
+}
+@model IEnumerable<WebPixCoreIn.Models.AcaoViewModel>
+<!-- Modal -->
+<div id="myModal" class="modal fade" role="dialog">
+    <div class="modal-dialog">
+
+        <!-- Modal content-->
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal">&times;</button>
+                <h4 class="modal-title">Ações do Motor: @ViewBag.Motor</h4>
+            </div>
+            <div class="modal-body">
+                <div class="table-responsive">
+                    <table class="table">
+                        <thead>
+                            <tr>
+                                <th>
+                                    ID
+                                </th>
+                                <th>
+                                    Tipo Ação
+                                </th>
+                                <th>
+                                    Caminho
+                                </th>
+                                <th>
+                                    Motor Auxiliar
+                                </th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            @foreach (var item in Model)
+                            {
+                                <tr>
+                                    <td>
+                                        @item.ID
+                                    </td>
+                                    <td>
+                                        @item.idTipoAcao
+                                    </td>
+                                    <td>
+                                        @item.Caminho
+                                    </td>
+                                    <td>
+                                        @item.MotorAuxiliar
+                                    </td>
+                                </tr>
+                            }
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+
+    </div>
+</div>

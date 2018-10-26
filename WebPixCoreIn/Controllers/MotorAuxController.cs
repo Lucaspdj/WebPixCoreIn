@@ -5,6 +5,7 @@ using System.Data;
 using System.Data.Entity;
 using System.Linq;
 using System.Net;
+using System.Threading.Tasks;
 using System.Web;
 using System.Web.Mvc;
 using WebPixCoreIn.Models;
@@ -49,6 +50,48 @@ namespace WebPixCoreIn.Controllers
         public ActionResult Create()
         {
             return View();
+        }
+
+        [HttpGet]
+        public ActionResult ModalAcoes(int? id)
+        {
+            if (id != null)
+            {
+                var acoes = GetAcoes(Convert.ToInt32(id));
+                var motor = GetMotorAuxilixar(Convert.ToInt32(id));
+                var tipoAcao = GetTipoAcao();
+
+                ViewBag.Motor = motor.Nome;
+                foreach (var acao in acoes)
+                {
+                    acao.MotorAuxiliar = motor.Nome;
+                    acao.TipoAcao = tipoAcao.Nome;
+                }
+
+                return View(acoes);
+            }
+
+            return View();
+        }
+
+        //Implementar no InAPI
+        private TipoAcaoViewModel GetTipoAcao()
+        {
+            return new TipoAcaoViewModel();
+        }
+
+        private MotorAuxViewModel GetMotorAuxilixar(int id)
+        {
+            var keyUrl = ConfigurationManager.AppSettings["UrlApiIn"].ToString();
+            var url = keyUrl + "MotorAux/GetAll";
+            var client = new WebClient { Encoding = System.Text.Encoding.UTF8 };
+            var result = client.DownloadString(string.Format(url));
+            var jss = new System.Web.Script.Serialization.JavaScriptSerializer();
+            var motores = jss.Deserialize<IEnumerable<MotorAuxViewModel>>(result);
+
+            var motor = motores.Where(m => m.ID.Equals(id)).SingleOrDefault();
+
+            return motor;
         }
 
         // POST: MotorAux/Create
@@ -131,6 +174,19 @@ namespace WebPixCoreIn.Controllers
                 db.Dispose();
             }
             base.Dispose(disposing);
+        }
+
+        private IEnumerable<AcaoViewModel> GetAcoes(int motorId)
+        {
+            var keyUrl = ConfigurationManager.AppSettings["UrlApiIn"].ToString();
+            var url = keyUrl + "Acao";
+            var client = new WebClient { Encoding = System.Text.Encoding.UTF8 };
+            var result = client.DownloadString(string.Format(url));
+            var jss = new System.Web.Script.Serialization.JavaScriptSerializer();
+            var resultAcoes = jss.Deserialize<AcaoViewModel[]>(result);
+
+            var acoes = resultAcoes.Where(r => r.idMotorAux.Equals(motorId));
+            return acoes;
         }
     }
 }
