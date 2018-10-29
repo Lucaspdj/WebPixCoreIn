@@ -1,9 +1,9 @@
 ﻿@{
     Layout = null;
 }
-@model IEnumerable<WebPixCoreIn.Models.AcaoViewModel>
+@model IEnumerable<WebPixCoreIn.Models.ParametroViewModel>
 <!-- Modal -->
-<div id="myModal" class="modal fade" role="dialog">
+<div id="parametros" class="modal fade" role="dialog">
     <div class="modal-dialog">
 
         <!-- Modal content-->
@@ -11,24 +11,24 @@
             <div class="modal-header">
                 <div class="row" style="margin: 10px;">
                     <button type="button" class="close" data-dismiss="modal">&times;</button>
-                    <h4 class="modal-title">Ações do Motor: @ViewBag.Motor</h4>
+                    <h4 class="modal-title">Parâmetros da Ação: @ViewBag.Acao</h4>
                 </div>
                 <div class="row">
                     <div class="col-sm-6">
-                        <button onclick="editarAcao()" type="button" class="btn btn-default pull-left">
+                        <button onclick="editarParametro()" type="button" class="btn btn-default pull-left">
                             <span class="glyphicon glyphicon-edit"></span>
                         </button>
                     </div>
                     <div class="col-sm-6">
-                        <button type="button" onclick="adicionarAcao(@Model.FirstOrDefault().idMotorAux)" class="btn btn-default pull-right">
+                        <button type="button" onclick="adicionarParametro(@Model.FirstOrDefault().idAcao)" class="btn btn-default pull-right">
                             <span class="glyphicon glyphicon-plus"></span>
                         </button>
-                    </div>    
+                    </div>
                 </div>
             </div>
             <div class="modal-body">
                 <div class="table-responsive">
-                    <table class="table" id="acoes">
+                    <table class="table" id="parametros">
                         <thead>
                             <tr>
                                 <th></th>
@@ -36,13 +36,16 @@
                                     ID
                                 </th>
                                 <th>
-                                    Tipo Ação
+                                    Tipo
                                 </th>
                                 <th>
                                     Nome
                                 </th>
                                 <th>
-                                    Motor Auxiliar
+                                    Ordem
+                                </th>
+                                <th>
+                                    Ação
                                 </th>
                             </tr>
                         </thead>
@@ -52,20 +55,23 @@
                                 <tr>
                                     <td>
                                         <div class="radio">
-                                            <input type="radio" name="acaoRadio" value="@item.ID" id="@item.ID">
+                                            <input type="radio" name="parametroRadio" value="@item.ID" id="@item.ID">
                                         </div>
                                     </td>
                                     <td>
                                         @item.ID
                                     </td>
                                     <td>
-                                        @item.idTipoAcao
+                                        @item.Tipo
                                     </td>
-                                    <td onclick="mostrarParametros(@item.ID)">
+                                    <td>
                                         @item.Nome
                                     </td>
                                     <td>
-                                        @item.MotorAuxiliar
+                                        @item.Ordem
+                                    </td>
+                                    <td>
+                                        @item.Acao
                                     </td>
                                 </tr>
                             }
