@@ -161,12 +161,14 @@
     <Compile Include="Models\ClienteViewModel.cs" />
     <Compile Include="Models\MotorAuxViewModel.cs" />
     <Compile Include="Models\ParametroViewModel.cs" />
+    <Compile Include="Models\TipoAcaoViewModel.cs" />
     <Compile Include="Models\WebPixCoreInContext.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="Content\bootstrap.css" />
     <Content Include="Content\bootstrap.min.css" />
+    <Content Include="Content\datatables.min.css" />
     <Content Include="Content\template\HTML\buttons.html" />
     <Content Include="Content\template\HTML\calendar.html" />
     <Content Include="Content\template\HTML\charts.html" />
@@ -313,6 +315,11 @@
     <Content Include="fonts\glyphicons-halflings-regular.svg" />
     <Content Include="Global.asax" />
     <Content Include="Content\Site.css" />
+    <Content Include="images\sort_asc.png" />
+    <Content Include="images\sort_asc_disabled.png" />
+    <Content Include="images\sort_both.png" />
+    <Content Include="images\sort_desc.png" />
+    <Content Include="images\sort_desc_disabled.png" />
     <Content Include="Scripts\bootstrap.js" />
     <Content Include="Scripts\bootstrap.min.js" />
     <Content Include="ApplicationInsights.config">
@@ -331,6 +338,7 @@
     <Content Include="Content\template\HTML\img\Thumbs.db" />
     <None Include="Properties\PublishProfiles\FolderProfile.pubxml" />
     <None Include="Scripts\jquery-1.10.2.intellisense.js" />
+    <Content Include="Scripts\datatables.min.js" />
     <Content Include="Scripts\jquery-1.10.2.js" />
     <Content Include="Scripts\jquery-1.10.2.min.js" />
     <None Include="Scripts\jquery.validate-vsdoc.js" />
@@ -339,6 +347,7 @@
     <Content Include="Scripts\jquery.validate.unobtrusive.js" />
     <Content Include="Scripts\jquery.validate.unobtrusive.min.js" />
     <Content Include="Scripts\modernizr-2.6.2.js" />
+    <Content Include="Scripts\Pages\motorAux.js" />
     <Content Include="Scripts\respond.js" />
     <Content Include="Scripts\respond.min.js" />
     <Content Include="Web.config" />
@@ -375,6 +384,10 @@
     <Content Include="Views\Parametro\Details.cshtml" />
     <Content Include="Views\Parametro\Edit.cshtml" />
     <Content Include="Views\Parametro\Index.cshtml" />
+    <Content Include="Views\MotorAux\ModalAcoes.cshtml" />
+    <Content Include="Views\MotorAux\ModalAcao.cshtml" />
+    <Content Include="Views\MotorAux\ModalParametros.cshtml" />
+    <Content Include="Views\MotorAux\ModalParametro.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
@@ -410,7 +423,7 @@
           <AutoAssignPort>True</AutoAssignPort>
           <DevelopmentServerPort>50684</DevelopmentServerPort>
           <DevelopmentServerVPath>/</DevelopmentServerVPath>
-          <IISUrl>http://localhost:50684/</IISUrl>
+          <IISUrl>http://localhost:50685/</IISUrl>
           <NTLMAuthentication>False</NTLMAuthentication>
           <UseCustomServer>False</UseCustomServer>
           <CustomServerUrl>
