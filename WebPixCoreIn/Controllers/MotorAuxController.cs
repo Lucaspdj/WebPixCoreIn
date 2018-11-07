@@ -61,6 +61,7 @@ namespace WebPixCoreIn.Controllers
                 var motor = GetMotorAuxilixarById(Convert.ToInt32(id));
 
                 ViewBag.Motor = motor.Nome;
+                ViewBag.IdMotor = motor.ID;
                 foreach (var acao in acoes)
                 {
                     acao.MotorAuxiliar = motor.Nome;
@@ -216,6 +217,7 @@ namespace WebPixCoreIn.Controllers
                 var motor = motores.FirstOrDefault(x => x.ID.Equals(acao.idMotorAux));
 
                 ViewBag.Motor = motor.Nome;
+                ViewBag.IdMotor = motor.ID;
 
                 return View(acao);
             }
