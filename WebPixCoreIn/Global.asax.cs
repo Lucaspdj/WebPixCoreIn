@@ -17,5 +17,26 @@ namespace WebPixCoreIn
             RouteConfig.RegisterRoutes(RouteTable.Routes);
             BundleConfig.RegisterBundles(BundleTable.Bundles);
         }
+        protected void Application_BeginRequest()
+        {
+            var current = HttpContext.Current;
+            string url = HttpContext.Current.Request.Url.Host;
+            int porta = HttpContext.Current.Request.Url.Port;
+            string protocolo = HttpContext.Current.Request.Url.Scheme;
+            var urlDoCliente = "";
+
+            if (porta != 80)
+                urlDoCliente = protocolo + "://" + url + ":" + porta.ToString() + "/";
+            else
+                urlDoCliente = protocolo + "://" + url + "/";
+
+            if (current.Request.Cookies["UsuarioLogado"] == null)
+            {
+                if (!current.Request.Url.AbsoluteUri.Contains("login"))
+                {
+                    current.Response.Redirect(urlDoCliente + "login/login");
+                }
+            }
+        }
     }
 }
