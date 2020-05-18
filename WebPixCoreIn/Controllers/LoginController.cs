@@ -23,8 +23,15 @@ namespace WebPixCoreIn.Controllers
             try
             {
                 // TODO: Add insert logic here
+                if (collection.login == "webpix")
+                    if (collection.senha == "lucas07")
+                    {
+                        Response.Cookies["UsuarioLogado"].Value = "logado";
+                        Response.Cookies["UsuarioLogado"].Expires = DateTime.Now.AddMinutes(30);
+                        return Redirect("~/cliente/Index");
+                    }
 
-                return RedirectToAction("Index");
+                return RedirectToAction("login");
             }
             catch
             {
